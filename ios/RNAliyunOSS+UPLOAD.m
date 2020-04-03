@@ -18,6 +18,10 @@ RCT_REMAP_METHOD(asyncUpload, asyncUploadWithBucketName:(NSString *)bucketName o
         put.bucketName = bucketName;
         put.objectKey = objectKey;
         put.uploadingData = data;
+
+        if (options && options[@"content-type"]) {
+            put.contentType = options[@"content-type"];
+        }
         
         // 设置Content-Type，可选
         //        put.contentType = @"application/octet-stream";
